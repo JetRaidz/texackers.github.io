@@ -1,0 +1,356 @@
+/* rm */
+@import url("https://cdn.jsdelivr.net/gh/vsalvino/computer-modern@main/fonts/serif.css");
+/* sf */
+@import url("https://cdn.jsdelivr.net/gh/vsalvino/computer-modern@main/fonts/sans.css");
+@import url("https://cdn.jsdelivr.net/gh/vsalvino/computer-modern@main/fonts/bright.css");
+/* tt */
+@import url("https://cdn.jsdelivr.net/gh/vsalvino/computer-modern@main/fonts/typewriter.css");
+
+:root {
+  /* light mode */
+  --ink:        #1c1917;
+  --ink-light:  #57534e;
+  --ink-faint:  #a8a29e;
+  --paper:      #fefbf6;
+  --paper-dim:  #f5f0e8;
+  --accent:     #7c2d12;
+  --accent-hover:#991b1b;
+  --rule:       #d6d3ce;
+  --mono-bg:    #f0ece4;
+
+
+  --font-display: 'Computer Modern Serif', serif;
+  --font-sans:    'Computer Modern Bright', 'Helvetica Neue', sans-serif;
+  --font-body:    'Computer Modern Serif', 'Georgia', serif;
+  --font-mono:    'Computer Modern Typewriter', 'Menlo', monospace;
+
+  --measure:    62ch;         /* comfortable reading width */
+  --gutter:     clamp(1.5rem, 5vw, 4rem);
+  --leading:    1.65;
+}
+
+/* dark mode */
+  [data-theme="dark"] {
+  --ink:        #fefbf6;
+  --ink-light:  #f5f0e8;
+  --ink-faint:  #a8a29e;
+  --paper:      #202024;
+  --paper-dim:  #323338;
+  --accent:     #82B9E7;
+  --accent-hover:#EABA42;
+  --rule:       #393A3F;
+  --mono-bg:    #f0ece4;
+}
+
+/* show/hide the appropriate icon */
+.theme-icon-dark  { display: none; }
+[data-theme="dark"] .theme-icon-light { display: none; }
+[data-theme="dark"] .theme-icon-dark  { display: inline; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: var(--leading);
+  color: var(--ink);
+  background: var(--paper);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+  transition: color 0.15s ease;
+}
+a:hover { color: var(--accent-hover); }
+
+img { max-width: 100%; display: block; }
+
+
+
+.site-header,
+.site-footer,
+.page-content { padding-inline: var(--gutter); }
+
+.page-content {
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-block: 3rem 5rem;
+}
+
+
+/* header/masthead */
+.site-header {
+  border-bottom: 2px solid var(--ink);
+  padding-block: 1.6rem 1rem;
+}
+
+.header-inner {
+  max-width: 72rem;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem 2rem;
+}
+
+.masthead {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  color: var(--ink);
+}
+.masthead:hover { color: var(--accent); }
+
+/* TeX-style lowered E */
+.masthead .tex-e {
+  /* font-size: 0.82em; */
+  position: relative;
+  top: 0.22em;
+  margin-left: -0.06em;
+  margin-right: -0.04em;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.8rem;
+}
+
+nav a {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.025em;
+  color: var(--ink-light);
+  text-decoration: none;
+  position: relative;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+nav a:hover,
+nav a[aria-current="page"] { color: var(--ink); }
+nav a:hover::after,
+nav a[aria-current="page"]::after { width: 100%; }
+
+
+/* === other shit === */
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.15;
+  margin-bottom: 0.4em;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  margin-top: 2.5rem;
+  margin-bottom: 0.6rem;
+  color: var(--ink);
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-top: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+
+p { margin-bottom: 1rem; }
+
+.subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink-light);
+  margin-top: -0.2rem;
+  margin-bottom: 2rem;
+}
+
+.lead {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.75;
+  margin-bottom: 1.6rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin-block: 2.2rem;
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--mono-bg);
+  padding: 0.12em 0.35em;
+  border-radius: 3px;
+}
+
+/* inline TeX logo anywhere in body text */
+.tex-logo .tex-e {
+  /* font-size: 0.82em; */
+  position: relative;
+  top: 0.28em;
+  margin-left: -0.12em;
+  margin-right: -0.05em;
+}
+
+
+/* project repo gridding */
+.repo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+  margin-top: 1.6rem;
+}
+
+.repo-card {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1.4rem 1.6rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.repo-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.repo-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.repo-card h3 a {
+  text-decoration: none;
+}
+
+.repo-card .repo-desc {
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  flex: 1;
+}
+
+.repo-card .repo-meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  margin-top: 0.4rem;
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+/* Project */
+/* class variant of a that just uses Computer Modern Typewriter */
+a.mono-link {
+  font-family: var(--font-mono);
+  font-size: 1.33rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+a.mono-link:hover { color: var(--accent-hover); }
+
+/* Member List */
+.members-list {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.4rem;
+}
+
+.member-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  transition: border-color 0.2s ease;
+}
+.member-card:hover { border-color: var(--accent); }
+
+.member-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--paper-dim);
+  flex-shrink: 0;
+}
+
+.member-info h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.member-info .handle {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+}
+
+.member-info .role {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--ink-light);
+  font-style: italic;
+}
+
+
+/* === FOOTER === */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding-block: 1.6rem 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+.site-footer a { color: var(--ink-light); }
+
+
+/* dynamic */
+@media (max-width: 600px) {
+  html { font-size: 16px; }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  nav ul { gap: 1.2rem; }
+
+  .members-list {
+    grid-template-columns: 1fr;
+  }
+}
